@@ -4,16 +4,26 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    [Route("api/[controller]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class SuperHeroController : Controller
     {
         [HttpGet]
-        public async Task<ActionResult<List<SuperHero>>> Get()
+        
+        public async Task<ActionResult<List<SuperHero>>> GetSuperHeroes()
         {
             //<List<SuperHero> -> return value...
 
-            
+            return new List<SuperHero>
+            {
+                new SuperHero
+                {
+                    Name = "Spider-Man",
+                    FirstName = "Peter",
+                    LastName = "Parker",
+                    Place = "New York City"
+                }
+            };
         }
 
         public IActionResult Index()
