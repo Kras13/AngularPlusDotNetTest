@@ -26,6 +26,11 @@ namespace SuperHeroAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(options => options.AddPolicy(name: "SuperHeroOrigins",
+                policy =>
+                {
+                    policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+                }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +40,8 @@ namespace SuperHeroAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("SuperHeroOrigins");
 
             app.UseHttpsRedirection();
 

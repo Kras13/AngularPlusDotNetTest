@@ -4,7 +4,8 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    [Route("[controller]/[action]")]
+    //[Route("[controller]/[action]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class SuperHeroController : Controller
     {
